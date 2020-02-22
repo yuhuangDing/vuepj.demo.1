@@ -7,6 +7,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //引入Mui
 import '../lib/mui/css/mui.css'
+import '../lib/mui/css/icon.css'
 
 
 
