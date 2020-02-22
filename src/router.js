@@ -10,6 +10,7 @@ import memberContainernt from'./components/tarbar/memberContainent.vue'
 var router=new VueRouter({
     routes:
         [//路由规则
+            {path: '/',redirect:'/home'},
             {path:'/home',component:homeContainent},
             {path:'/shopcar',component:shopcarContainent},
             {path:'/member',component:memberContainernt},
