@@ -19,7 +19,7 @@ module.exports={
         rules: [
             {test:/\.vue$/,use:'vue-loader'},//处理vue文件
             {test:/\.css$/,use:['style-loader' ,'css-loader']},//处理css文件的loader
-            {test: /\.(jpg|png|jpeg|bmp)$/, use: 'url-loader'},//处理图片url,
+            {test: /\.(jpg|png|jpeg|bmp)$/, use:[ {loader: 'url-loader',options: {esModule:false}}] },//处理图片url,
             {test:/\.(ttf|eot|svg|woff|woff2)$/,use:'url-loader'},//处理字体的loader
             {test:/.\.js$/,use:'babel-loader',exclude:/node_modules/},//配置babel的规则
 
