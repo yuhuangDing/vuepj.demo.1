@@ -2,6 +2,12 @@
 console.log('ok')
 //引入vue
 import Vue from 'vue'
+//引入Vue-router
+import VueRouter from "vue-router";
+Vue.use(VueRouter)
+import router from './router.js'
+
+
 //引入mint-ui
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
@@ -19,5 +25,6 @@ Vue.use(MintUI)
 
 var vm=new Vue({
     el:'#app',
+    router,//挂载路由
     render:c=>c(app)
 })

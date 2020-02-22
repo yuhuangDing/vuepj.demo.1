@@ -10,3 +10,9 @@
 ###·提交git commit -m "init myproject"
 ###·创建远端仓库，使用git remote add origin   ssh
 ###·使用git push -u origin master提交
+
+
+
+
+##改造tarbar为路由，设置路由高亮
+##创建各个组件，点击路由连接展示对应的路由组件
