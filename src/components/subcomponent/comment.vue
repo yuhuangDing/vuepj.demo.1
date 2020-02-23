@@ -4,44 +4,52 @@
         <hr/>
         <textarea placeholder="请输入评论内容（最多120字）" maxlength="120" class="textare1"></textarea>
         <mt-button type="primary" size="large" >发表评论</mt-button>
-        <div class="cmt-list">
-            <div class="cmt-item">
+        <div class="cmt-list" >
+            <div class="cmt-item" v-for="(item,i) in comments" :key="item.add_time">
                 <div class="cmt-title">
-                    第1楼&nbsp;&nbsp; 用户:匿名用户&nbsp;&nbsp;发布时间：2020-2-22 23:50
+                    第{{i+1}}楼&nbsp;&nbsp; 用户:{{item.user_name}}&nbsp;&nbsp;发布时间：{{item.add_time|dataFormat('YYYY-MM-DD')}}
                 </div>
                 <div class="cmt-body">
-                    demo
-                </div>
-            </div>
-        </div>
-        <div class="cmt-list">
-            <div class="cmt-item">
-                <div class="cmt-title">
-                    第1楼&nbsp;&nbsp; 用户:匿名用户&nbsp;&nbsp;发布时间：2020-2-22 23:50
-                </div>
-                <div class="cmt-body">
-                    demo
-                </div>
-            </div>
-        </div>
-        <div class="cmt-list">
-            <div class="cmt-item">
-                <div class="cmt-title">
-                    第1楼&nbsp;&nbsp; 用户:匿名用户&nbsp;&nbsp;发布时间：2020-2-22 23:50
-                </div>
-                <div class="cmt-body">
-                    demo
+                    {{item.content==='undefined'?'暂无评论':item.content}}
                 </div>
             </div>
         </div>
 
-        <mt-button type="danger" size="large" plain>加载更多</mt-button>
+
+        <mt-button type="danger" size="large" plain @click="getMore">加载更多</mt-button>
     </div>
 </template>
 
 <script>
+    import {Toast} from 'mint-ui'
     export default {
-        name: "comment"
+        name: "comment",
+        data(){
+            return{
+                comments:[],//所有评论数据
+            pageIndex:1,//默认展示第一页数据
+        }},
+        methods:{
+            getComments(){
+                this.$http.get("api/getcomments/"+this.id+"?pageindex="+this.pageIndex).then(result=>{
+                    if(result.body.status===0)
+                    {
+                      // this.comments=result.body.message
+                        this.comments=this.comments.concat(result.body.message)//每当获取新评论时候不要老数据清空，应该是
+                    }else{
+                        Toast('获取失败')
+                    }
+                })
+            },
+            getMore(){//获取更多评论
+                this.pageIndex++
+                this.getComments()
+            }
+        },
+        props:["id"],
+        created() {
+            this.getComments()
+        }
     }
 </script>
 

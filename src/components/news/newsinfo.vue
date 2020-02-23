@@ -11,7 +11,7 @@
         <div class="content" v-html="newsinfo.content">
         </div>
     <!--   评论组件-->
-        <comment></comment>
+        <comment :id="this.id"></comment>
 
 
     </div>
