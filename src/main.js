@@ -17,6 +17,8 @@ import VueResource from 'vue-resource'
 Vue.use(VueResource)
 //设置全局根路径
 Vue.http.options.root='http://www.liulongbin.top:3005'
+//定于全局表单数据提交格式
+Vue.http.options.emulateJSON=true
 
 //引入Mui
 import '../lib/mui/css/mui.css'

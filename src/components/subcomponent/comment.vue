@@ -2,8 +2,8 @@
     <div>
         <h3 class="h3text">发表评论</h3>
         <hr/>
-        <textarea placeholder="请输入评论内容（最多120字）" maxlength="120" class="textare1"></textarea>
-        <mt-button type="primary" size="large" >发表评论</mt-button>
+        <textarea placeholder="请输入评论内容（最多120字）" maxlength="120" class="textare1" v-model="msg"></textarea>
+        <mt-button type="primary" size="large" @click="postcomment">发表评论</mt-button>
         <div class="cmt-list" >
             <div class="cmt-item" v-for="(item,i) in comments" :key="item.add_time">
                 <div class="cmt-title">
@@ -22,12 +22,14 @@
 
 <script>
     import {Toast} from 'mint-ui'
+
     export default {
         name: "comment",
         data(){
             return{
                 comments:[],//所有评论数据
             pageIndex:1,//默认展示第一页数据
+                msg:"",//评论内容
         }},
         methods:{
             getComments(){
@@ -44,6 +46,26 @@
             getMore(){//获取更多评论
                 this.pageIndex++
                 this.getComments()
+            },
+            postcomment(){
+                //发表评论
+
+                //校验是否为空
+                if(this.msg.trim().length===0){
+                    return  Toast("评论数据空！")
+                }
+                //url地址，数据对象   ,定于提交表单数据格式
+                this.$http.post("api/postcomment/"+this.$route.params.id,{
+                    content:this.msg.trim()
+                }).then(function (result) {
+                    if(result.body.status===0){
+                        //拼接评论对象
+                        var cmt={user_name:'My',add_time:Date.now(),content:this.msg.trim()}
+                        this.comments.unshift(cmt)
+                        this.msg=""
+                    }
+                })
+
             }
         },
         props:["id"],

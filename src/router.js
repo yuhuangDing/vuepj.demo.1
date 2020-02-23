@@ -6,6 +6,7 @@ import shopcarContainent from'./components/tarbar/shopcarContainent.vue'
 import memberContainernt from'./components/tarbar/memberContainent.vue'
 import newslist from "./components/news/newslist.vue"
 import newsinfo from "./components/news/newsinfo.vue"
+import photolist from "./components/photos/photolist.vue";
 
 var router=new VueRouter({
     routes:
@@ -16,7 +17,9 @@ var router=new VueRouter({
             {path:'/member',component:memberContainernt},
             {path:'/search',component:searchContainent},
             {path:'/home/newslist',component:newslist},
-            {path:'/home/newsinfo/:id',component:newsinfo}
+            {path:'/home/newsinfo/:id',component:newsinfo},
+            {path:'/home/photolist',component:photolist}
+
 
         ],
     linkActiveClass:'mui-active'//覆盖选择高亮类，

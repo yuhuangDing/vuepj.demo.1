@@ -3,7 +3,7 @@
         <!--轮播图-->
         <mt-swipe :auto="4000" >
             <!--使用v-for循环的话要使用key-->
-            <mt-swipe-item v-for="item in lunbotuList" :key="item.url">
+            <mt-swipe-item v-for="item in lunbotuList" :key="item.id">
                 <img :src="item.img" width="100%" height="100%">
             </mt-swipe-item>
         </mt-swipe>
@@ -16,10 +16,10 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4">
-                <a href="#">
+                <router-link to="/home/photolist">
                     <img src="../../images/menu2.png" width="60px" height="60px">
                 <div class="mui-media-body">图片分享</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
                 <a href="#">
@@ -68,6 +68,7 @@
                 this.$http.get('api/getlunbo').then(result=>{
                    console.log(result.body)
                     if(result.body.status===0){
+                        console.log(result.body)
                         this.lunbotuList=result.body.message
                         Toast('获取成功');
                     }else {
