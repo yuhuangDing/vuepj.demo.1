@@ -6,9 +6,9 @@
 ###·添加README.md说明文件
 ###·加入开源协议文件
 ###·使用git init初始化
-###·添加跟踪，git add .    >git status可以查看跟踪文件列表
+###·添加跟踪，git add .   ----git status可以查看跟踪文件列表
 ###·提交git commit -m "init myproject"
-###·创建远端仓库，使用git remote add origin   ssh
+###·创建远端仓库，使用git remote add origin   ssh@
 ###·使用git push -u origin master提交
 
 
@@ -16,3 +16,14 @@
 
 ##改造tarbar为路由，设置路由高亮
 ##创建各个组件，点击路由连接展示对应的路由组件
+
+###改造主页9宫格
+###改造新闻资讯列表
+######    绘制界面，使用vue-resource获取数据，渲染真是数据
+列表中的每一项改为router-link，跳转的时候提供唯一表示符，创建新闻详情页面，再路由模块中将新闻详情的路由地址和组件页面对应
+######新闻详情页面布局和数据渲染
+
+
+
+###引入组件
+在父组件中import引入，在components中注册，使用对应标签

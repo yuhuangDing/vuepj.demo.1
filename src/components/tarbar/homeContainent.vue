@@ -10,10 +10,10 @@
         <!--  6宫格视图-->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 ">
-                <a href="#">
+                <router-link to="/home/newslist">
                 <img src="../../images/menu1.png" width="60px" height="60px">
                 <div class="mui-media-body">新闻动态</div>
-                </a>
+                </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4">
                 <a href="#">
@@ -65,7 +65,7 @@
                 http://www.liulongbin.top:3005/api/post
                 http://www.liulongbin.top:3005/api/jsonp
                 * */
-                this.$http.get('http://www.liulongbin.top:3005/api/getlunbo').then(result=>{
+                this.$http.get('api/getlunbo').then(result=>{
                    console.log(result.body)
                     if(result.body.status===0){
                         this.lunbotuList=result.body.message
