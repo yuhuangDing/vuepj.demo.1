@@ -58,3 +58,22 @@
 1.和电脑处于通过网络，
 2.在package.json文件在dev脚本中添加一个--host指令，把当前电脑的wifi ip地址设置为--host的指令值
     +cmd中运行ipconfig   查看无线网络的ip 
+    
+    
+##获取所有分类，并渲染
+###制作图片列表，使用懒加载，使用Mint-ui的lazy组件
+
+###处理图片src引入错误的办法
+在webpack.config中加入loader
+{test: /\.(jpg|png|jpeg|bmp)$/, use:[ {loader: 'url-loader',options: {esModule:false}}] },//处理图片url,
+https://blog.csdn.net/simper_boy/article/details/103455444
+
+###点击图片进入图片详情，li成router-link要使用tag属性指定渲染为li
+
+
+###使用vue-preview来实现缩略图效果
+1.使用npm i vue-preview -s装包，导入注册，使用
+https://github.com/LS1231/vue-preview
+2.获取图片列表后，使用v-for渲染数据
+3.每个图片对象中有w和h
+

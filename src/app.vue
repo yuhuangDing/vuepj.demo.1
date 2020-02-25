@@ -2,6 +2,10 @@
     <div class="app-container">
         <!--顶部-->
         <mt-header fixed title="Vue项目 *Bulid-1.0">
+            <div slot="left" @click="goback()">
+                <mt-button icon="back">返回</mt-button>
+            </div>
+            <mt-button icon="more" slot="right">s</mt-button>
         </mt-header>
 
         <!--中间 路由router-view-->
@@ -34,10 +38,19 @@
 </template>
 
 <script>
-
+    export default {
+        methods:{
+            goback(){
+                this.$router.go(-1)
+            }
+        }
+    }
 </script>
 
 <style scoped>
+    .mint-header.is-fixed{
+        z-index: 99;
+    }
     .app-container{
         padding-top: 41px;
         padding-bottom:50px;

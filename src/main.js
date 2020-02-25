@@ -29,8 +29,12 @@ import '../lib/animate.css'
 //导入app根组件
 import app from './app.vue'
 
-//导入时间插件
+//导入时间插件，需要使用npm安装vue-moment
 import moment from 'moment'
+
+//缩略图插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 
 //定于全局过滤器
 Vue.filter('dataFormat',function (dataStr,pattern="YYYY-MM-DD HH:mm:ss") {
