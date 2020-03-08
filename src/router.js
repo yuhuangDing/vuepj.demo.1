@@ -10,6 +10,8 @@ import photolist from "./components/photos/photolist.vue";
 import photoinfo from "./components/photos/photoinfo.vue";
 import goodsList from "./components/goods/goodsList.vue";
 import goodsinfo from "./components/goods/goodsinfo.vue";
+import goodsdesc from "./components/goods/goodsdesc.vue";
+import goodscomment from "./components/goods/goodscomment.vue";
 
 var router=new VueRouter({
     routes:
@@ -24,7 +26,9 @@ var router=new VueRouter({
             {path:'/home/photolist',component:photolist},
             {path:'/home/photoinfo:id',component:photoinfo},
             {path:'/home/goodslist',component:goodsList},
-            {path:'/home/goodsinfo/:id',component:goodsinfo,name:'goodsinfo'}
+            {path:'/home/goodsinfo/:id',component:goodsinfo,name:'goodsinfo'},
+            {path:'/home/goodsdesc/:id',component:goodsdesc,name:'goodsdesc'},
+            {path:'/home/goodscomment/:id',component:goodscomment,name:'goodscomment'}
 
         ],
     linkActiveClass:'mui-active'//覆盖选择高亮类，
