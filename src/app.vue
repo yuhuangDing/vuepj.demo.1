@@ -2,7 +2,7 @@
     <div class="app-container">
         <!--顶部-->
         <mt-header fixed title="Vue项目 *Bulid-1.0">
-            <div slot="left" @click="goback()">
+            <div slot="left" @click="goback" v-show="flag">
                 <mt-button icon="back">返回</mt-button>
             </div>
 
@@ -26,7 +26,7 @@
             </router-link>
             <router-link class="mui-tab-item1" to="/shopcar">
                 <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-                    <span class="mui-badge" id="badge">0</span></span>
+                    <span class="mui-badge" id="badge">{{$store.getters.getAllcount}}</span></span>
                 <span class="mui-tab-label">购物车</span>
             </router-link>
             <router-link class="mui-tab-item1" to="search">
@@ -39,9 +39,31 @@
 
 <script>
     export default {
+        data(){
+            return{
+                flag:false
+            }
+        },
         methods:{
             goback(){
                 this.$router.go(-1)
+            }
+        },
+        created() {
+              /*  if(this.$route.path==="/home"){
+                    this.flag=false;
+                }else {
+                    this.flag=true
+                }*/
+               this.flag=this.$route.path==="/home"?false:true;
+            },
+        watch:{
+            '$route.path':function (newVal) {
+                if(newVal==="/home"){
+                    this.flag=false
+                }else {
+                    this.flag=true
+                }
             }
         }
     }

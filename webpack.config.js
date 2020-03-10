@@ -1,5 +1,5 @@
-var path=require('path')
-var htmlWebpackPlugin=require('html-webpack-plugin')
+var path=require('path');
+var htmlWebpackPlugin=require('html-webpack-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports={
@@ -25,4 +25,4 @@ module.exports={
 
         ]
     }
-}
+};

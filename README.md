@@ -79,3 +79,18 @@ https://github.com/LS1231/vue-preview
 + 2.获取图片列表后，使用v-for渲染数据
 + 3.每个图片对象中有w和h
 
+### vuex
++ vuex是Vue配套的公共数据管理工具,它可以把一些共享的数据,保存到vuex中,方便整个程序中的任何组件直接获取或修改我们的公共数据
++ 会创建一个共享存储区来存放各个组件的共享数据
++ 配置步骤
+    + 1.cnpm i vuex --s
+    + 2.导入并使用，vue.use
+    + 3.new Vuex.Store()得到数据仓储对象
+    + //导入vuex，使用，创建仓储,之后挂载到Vue实例中
+      import Vuex from 'vuex'
+      Vue.use(Vuex)
+      var store=new Vuex.Store({
+          state:{},//和组件中的data一样，专门用来存数据
+          mutations:{}//和组件中的methods方法一样
+      })
+     + 在vue实例中挂载，组件中使用store中的数据使用this.$store.state.***访问数据

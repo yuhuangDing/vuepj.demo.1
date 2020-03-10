@@ -88,8 +88,8 @@
                     if(result.body.status===0){
                         //先循环轮播图数组为item添加img，轮播图组件只认识img属性
                         result.body.message.forEach(item=>{
-                            item.img=item.src
-                        })
+                            item.img=item.src;
+                        });
                         this.lunbotu=result.body.message;
 
 
@@ -114,8 +114,11 @@
                 this.$router.push({name:"goodscomment",params:{id}})
             },
             addgoods(){
-                this.ballFlag=!this.ballFlag
-            },
+                this.ballFlag=!this.ballFlag;
+                var goodsinfo= {id:this.id,count:this.selectedCount,price:this.goodsinfo.sell_price,selected:true}//拼接一个保存到store中的数组的商品信息对象
+                this.$store.commit("addToCar",goodsinfo);//调用store中的mutations来保存信息
+
+               },
             beforeEnter(el){
                 el.style.transform="translate(0,0)"
             },
