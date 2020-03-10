@@ -99,12 +99,16 @@ var store=new Vuex.Store({
     },//和组件中的methods方法一样
     getters:{//this.$store.getters.****
         //相当于计算属性
+
         getAllcount:function (state) {
             var num=0;
-            state.car.forEach(item=>{
-                num+=item.count
-            });
-            return num
+            if(state.car){
+                state.car.forEach(item=>{
+                    num+=item.count
+                });
+                return num
+            }
+
         },
         getGoodscount:function (state) {
             var o={};
