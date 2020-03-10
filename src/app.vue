@@ -50,12 +50,12 @@
             }
         },
         created() {
-              /*  if(this.$route.path==="/home"){
+                if(this.$route.path==="/home"){
                     this.flag=false;
                 }else {
                     this.flag=true
-                }*/
-               this.flag=this.$route.path==="/home"?false:true;
+                }
+              // this.flag=this.$route.path==="/home"?false:true;
             },
         watch:{
             '$route.path':function (newVal) {

@@ -62,6 +62,39 @@ var store=new Vuex.Store({
             }
             //更新car后，我们存到本地的localstorage中，防止刷新消失
             localStorage.setItem('car',JSON.stringify(state.car));
+        },
+        updateGoodsInfo(state,goodsinfo){
+            //修改购物车商品数量
+            //分析：
+            state.car.some(item=>{
+                if(item.id===goodsinfo.id){
+                    item.count=parseInt(goodsinfo.count);
+                    return true;
+                }
+            });
+            //更新商品数量后，我们把最新的购物车数据存到本地的localstorage中，防止刷新消失
+            localStorage.setItem('car',JSON.stringify(state.car));
+        },
+        removefromcar(state,id){
+            //根据id从store中的购物车删除对应的商品数据
+            state.car.some((item,i)=>{
+                if(item.id===id){
+                    state.car.splice(i,1);
+                    console.log("ok");
+                    return true;
+                }
+            });
+            //删除car后，我们存到本地的localstorage中，防止刷新消失
+            localStorage.setItem('car',JSON.stringify(state.car));
+        },
+        updateGoodsselected(state,info){
+            state.car.some(item=>{
+                if(item.id===info.id){
+                    item.selected=info.selected
+                }
+            });
+            //更新购物车商品状态后，我们存到本地的localstorage中，防止刷新消失
+            localStorage.setItem('car',JSON.stringify(state.car));
         }
     },//和组件中的methods方法一样
     getters:{//this.$store.getters.****
@@ -72,6 +105,33 @@ var store=new Vuex.Store({
                 num+=item.count
             });
             return num
+        },
+        getGoodscount:function (state) {
+            var o={};
+            state.car.forEach(item=>{
+               o[item.id]=item.count;//id作为键，count作为值
+            });
+            return o
+        },
+        getgoodsSelected:function(state){
+            var o={};
+            state.car.forEach(item=>{
+                o[item.id]=item.selected;//对象样例{88:ture }
+            });
+            return o;
+        },
+        getGoodsCountAndAmount(state){
+            var o={
+                count:0,//数量
+                amount:0//总价
+            };
+            state.car.forEach(item=>{
+                if(item.selected){
+                    o.count+=item.count;
+                    o.amount+=item.count*item.price;
+                }
+            });
+            return o;
         }
 
     }
